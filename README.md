@@ -1,8 +1,8 @@
 # docker-activemq
 ===============
 
-[![Build Status](https://travis-ci.org/rmohr/docker-activemq.svg?branch=master)](https://travis-ci.org/rmohr/docker-activemq)
-[![Docker Pulls](https://img.shields.io/docker/pulls/rmohr/activemq.svg?maxAge=2592000)](https://hub.docker.com/r/rmohr/activemq/)
+[![Build Status](https://travis-ci.org/blueapple/docker-activemq.svg?branch=master)](https://travis-ci.org/blueapple/docker-activemq)
+[![Docker Pulls](https://img.shields.io/docker/pulls/blueapple/activemq.svg?maxAge=2592000)](https://hub.docker.com/r/blueapple/activemq/)
 
 [Docker](https://www.docker.io/) file for trusted builds of [ActiveMQ](http://activemq.apache.org/) on https://registry.hub.docker.com/u/rmohr/activemq/.
 
