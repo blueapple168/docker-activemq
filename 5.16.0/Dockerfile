@@ -12,7 +12,7 @@ RUN set -x && \
     apk --update add --virtual build-dependencies curl \
     tzdata && \
     cp -r -f /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
-    echo "Asia/Shanghai" > /etc/timezone \
+    echo "Asia/Shanghai" > /etc/timezone && \
     curl https://archive.apache.org/dist/activemq/$ACTIVEMQ_VERSION/$ACTIVEMQ-bin.tar.gz -o $ACTIVEMQ-bin.tar.gz && \
     curl https://archive.apache.org/dist/activemq/$ACTIVEMQ_VERSION/$ACTIVEMQ-bin.tar.gz.sha512 -o $SHA512_VALUE && \
 
