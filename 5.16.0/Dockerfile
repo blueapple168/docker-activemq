@@ -3,7 +3,7 @@ FROM openjdk:8-jre-alpine
 ENV ACTIVEMQ_VERSION 5.16.0
 ENV ACTIVEMQ apache-activemq-$ACTIVEMQ_VERSION
 ENV ACTIVEMQ_TCP=61616 ACTIVEMQ_AMQP=5672 ACTIVEMQ_STOMP=61613 ACTIVEMQ_MQTT=1883 ACTIVEMQ_WS=61614 ACTIVEMQ_UI=8161
-ENV SHA512_VALUE=$ACTIVEMQ-bin.tar.gz.sha512
+ENV SHA512_VAL=999928176e57b0805e8a53834e7f4eb648baf271a0c60de31ebd95fa63f2b089aa41c2ef7353790835e2e8cc39c4b778f535b38e6dc0c67a79c3c1da335c4a0a
 
 ENV ACTIVEMQ_HOME /opt/activemq
 
@@ -13,14 +13,13 @@ RUN set -x && \
     tzdata && \
     cp -r -f /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
     echo "Asia/Shanghai" > /etc/timezone && \
-    curl https://archive.apache.org/dist/activemq/$ACTIVEMQ_VERSION/$ACTIVEMQ-bin.tar.gz -o $ACTIVEMQ-bin.tar.gz && \
-    curl https://archive.apache.org/dist/activemq/$ACTIVEMQ_VERSION/$ACTIVEMQ-bin.tar.gz.sha512 -o $SHA512_VALUE && \
+    curl https://archive.apache.org/dist/activemq/$ACTIVEMQ_VERSION/$ACTIVEMQ-bin.tar.gz -o $ACTIVEMQ-bin.tar.gz
 
     # Validate checksum
-    if [ "$(sha512sum -c $SHA512_VALUE|awk -F':' '{print $2}')" != 'OK' ];\
-       then \
-         echo "sha512 values doesn't match! exiting."  && \
-         exit 1; \
+RUN if [ "$SHA512_VAL" != "$(sha512sum $ACTIVEMQ-bin.tar.gz | awk '{print($1)}')" ];\
+    then \
+        echo "sha512 values doesn't match! exiting."  && \
+        exit 1; \
     fi;
 
 RUN tar xzf $ACTIVEMQ-bin.tar.gz -C  /opt && \
