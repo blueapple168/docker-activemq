@@ -16,8 +16,8 @@ The JMX broker listens on port 61616 and the Web Console on port 8161.
 Image Tags
 ----------
 
-    rmohr/activemq:latest (blueapple/activemq:5.16.0)
-    rmohr/activemq:5.16.0-alpine
+    blueapple/activemq:latest (blueapple/activemq:5.16.0)
+    blueapple/activemq:5.16.0-alpine
 
 Port Map
 --------
